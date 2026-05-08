@@ -16,3 +16,23 @@ dist/
 
 # OS
 .DS_Store
+.env
+/results/checkpoint-500/config.json
+/results/checkpoint-1000/config.json
+/results/checkpoint-500/generation_config.json
+/results/checkpoint-1000/generation_config.json
+/model.pt
+/results/checkpoint-500/model.safetensors
+/results/checkpoint-1000/model.safetensors
+/results/checkpoint-500/optimizer.pt
+/results/checkpoint-1000/optimizer.pt
+/results/checkpoint-500/rng_state.pth
+/results/checkpoint-1000/rng_state.pth
+/results/checkpoint-500/scaler.pt
+/results/checkpoint-1000/scaler.pt
+/results/checkpoint-500/scheduler.pt
+/results/checkpoint-1000/scheduler.pt
+/results/checkpoint-500/trainer_state.json
+/results/checkpoint-1000/trainer_state.json
+/results/checkpoint-500/training_args.bin
+/results/checkpoint-1000/training_args.bin

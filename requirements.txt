@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+datasets
+transformers
+torch
+vllm-mlx
+prometheus-client
+locust
+requests
+huggingface-hub
+accelerate>=1.1.0
