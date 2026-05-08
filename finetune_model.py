@@ -11,8 +11,8 @@ def download_model():
     if not hf_token:
         raise ValueError("HF_TOKEN environment variable not set. Please set it in your .env file or environment.")
 
-    model_id = "distilgpt2"
-    local_dir = "./model/qwen"
+    model_id = os.getenv("MODEL_ID")
+    local_dir = os.getenv("MODEL_DIR")
 
     print(f"Attempting to download {model_id} to {local_dir}...")
 
@@ -26,10 +26,11 @@ def download_model():
 
 def create_model():
     load_dotenv()
-    model_id = "distilgpt2"
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
+    model_id = os.getenv("MODEL_ID")
+    local_dir = os.getenv("MODEL_DIR")
+    tokenizer = AutoTokenizer.from_pretrained(local_dir)
     tokenizer.pad_token = tokenizer.eos_token
-    model = AutoModelForCausalLM.from_pretrained(model_id)
+    model = AutoModelForCausalLM.from_pretrained(local_dir)
 
 
     dataset = load_dataset("wikitext", "wikitext-2-raw-v1")
@@ -86,5 +87,5 @@ def create_model():
 
 
 if __name__ == "__main__":
-    #download_model()
+    download_model()
     create_model()
