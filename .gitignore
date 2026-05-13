@@ -56,3 +56,5 @@ dist/
 /model/gpt2/vocab.json
 /model/gpt2/coreml/text-generation/float32_model.mlpackage/Data/com.apple.CoreML/weights/weight.bin
 /gpt2-finetuned/
+/vllm-metal/
+/vllm/
