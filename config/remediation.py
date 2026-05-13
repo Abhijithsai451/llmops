@@ -3,7 +3,6 @@ import datetime
 import subprocess
 import threading
 from collections import deque
-
 import requests
 
 from config.alerting import _alert
