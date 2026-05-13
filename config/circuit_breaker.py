@@ -1,9 +1,10 @@
 import datetime
 import threading
 
+from config.alerting import _alert
 from config.configs_params import BACKEND_HEALTH
 from config.remediation import _auto_restart_vllm
-from configs_params import (_lock, CIRCUIT_OPEN, _alert
+from configs_params import (_lock, CIRCUIT_OPEN
                             )
 
 CB_THRESHOLD = 3

@@ -39,5 +39,22 @@ _lock       = threading.Lock()   # circuit breaker, request counter, totals
 _alert_lock = threading.Lock()   # alert dedup dict + deque (separate to avoid reentrant deadlock)
 
 
+# ─── Helpers  ───────────────────────────────────────────────────────────────────
+_request_counter = 0
+
+def _next_id() -> int:
+    global _request_counter
+    with _lock:
+        _request_counter += 1
+        return _request_counter
+
+def _inc_totals(success: bool):
+    global _total_requests, _total_success, _total_errors
+    with _lock:
+        _total_requests += 1
+        if success:
+            _total_success += 1
+        else:
+            _total_errors += 1
 
 
