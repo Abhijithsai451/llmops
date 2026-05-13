@@ -33,11 +33,6 @@ _force_fail   = False
 _force_slow   = False
 _slow_seconds = 3.0
 
-# ─── Auto-Remediation State ───────────────────────────────────────────────────
-remediation_log: deque = deque(maxlen=50)
-_auto_token_cap = 100
-_throttle_delay = 0.0
-_vllm_process   = None
 
 # ─── Locks ───────────────────────────────────────────────────────────────────
 _lock       = threading.Lock()   # circuit breaker, request counter, totals
@@ -45,21 +40,4 @@ _alert_lock = threading.Lock()   # alert dedup dict + deque (separate to avoid r
 
 
 
-
-# ─── AIOps Alerting ──────────────────────────────────────────────────────────
-_ALERT_COOLDOWN = 20
-
-def _alert(severity: str, key: str, message: str):
-    with _alert_lock:
-        now  = datetime.now()
-        last = _last_alert_key.get(key)
-        if last and (now - last).seconds < _ALERT_COOLDOWN:
-            return
-        _last_alert_key[key] = now
-        aiops_alerts.appendleft({
-            "severity":  severity,
-            "message":   message,
-            "timestamp": now.strftime("%H:%M:%S"),
-            "key":       key,
-        })
 
